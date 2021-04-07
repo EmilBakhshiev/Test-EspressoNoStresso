@@ -16,7 +16,7 @@ function Character() {
             <img src={characterImage} alt={characterName} />
             <div className='wrapper'>
                 <Link to='/'>
-                    <Button variant="contained" color="primary" className='btn btn_back'>Испытай судьбу снова</Button>
+                    <Button variant="contained" color="primary">Испытай судьбу снова</Button>
                 </Link>
             </div>
         </div>
