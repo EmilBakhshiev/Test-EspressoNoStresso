@@ -1,8 +1,11 @@
-import {  combineReducers } from 'redux';
-import addCharacterName from '../action/characters';
+import { combineReducers } from 'redux';
+import characterNameReducer from './characterName';
+import characterImageReducer from './characterImage';
+
 
 const rootReducer = combineReducers({
-    addCharacterName,
-  })
-  
-  export default rootReducer;
+    name: characterNameReducer,
+    image: characterImageReducer
+})
+
+export default rootReducer;

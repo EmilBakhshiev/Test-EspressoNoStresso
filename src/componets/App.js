@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
-
+import React from 'react';
 import api from '../utils/api';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route,  Switch } from 'react-router-dom';
 import Main from './Main';
 import Character from './Character';
+import { addCharacterName, addCharacterImage, removeCharacterName, removeCharacterImage } from '../redux/action/characters'
+import { useDispatch } from 'react-redux';
+
+
+
 
 function App() {
-  const [character, setCharacter] = useState('');
-  const [characterImage, setCharacterImage] = useState('');
 
+  const dispatch = useDispatch();
 
   function getCharacters() {
     api.getCharacters()
@@ -17,14 +20,15 @@ function App() {
           return [obj.name, obj.image]
         }));
         const randomCharacter = charactersArray[Math.floor(charactersArray.length * Math.random())];
-        setCharacter(randomCharacter[0]);
-        setCharacterImage(randomCharacter[1]);
+        dispatch(addCharacterName(randomCharacter[0]));
+        dispatch(addCharacterImage(randomCharacter[1]))
       })
+      .catch(err => console.error(err));
   }
 
-  function clearCharacter() {
-    setCharacter('');
-    setCharacterImage('');
+  function removeCharacter() {
+    dispatch(removeCharacterName(''));
+    dispatch(removeCharacterImage(''));
   }
 
   return (
@@ -32,15 +36,16 @@ function App() {
       <div className='content'>
         <Switch>
           <Route exact path='/'>
-            <Main getCharacters={getCharacters} clearCharacter={clearCharacter} />
+            <Main getCharacters={getCharacters} clearCharacter={removeCharacter} />
           </Route>
           <Route exact path='/answer'>
-            <Character characterImage={characterImage} character={character} />
+            <Character />
           </Route>
         </Switch>
       </div>
     </div>
   );
 }
+
 
 export default App;
