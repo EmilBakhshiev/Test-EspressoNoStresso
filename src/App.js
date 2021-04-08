@@ -1,9 +1,9 @@
 import React from 'react';
-import api from '../utils/api';
+import api from './utils/api';
 import { Route,  Switch } from 'react-router-dom';
-import Main from './Main';
-import Character from './Character';
-import { addCharacterName, addCharacterImage, removeCharacterName, removeCharacterImage } from '../redux/action/characters'
+import Main from './componets/Main';
+import Character from './componets/Character';
+import { addCharacterName, addCharacterImage, removeCharacterName, removeCharacterImage } from './store/action/characters'
 import { useDispatch } from 'react-redux';
 
 
