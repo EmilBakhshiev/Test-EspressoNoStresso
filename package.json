@@ -1,6 +1,5 @@
 {
     "name": "test-nespresso",
-    "homepage": "https://emilbakhshiev.github.io/Test-EspressoNoStresso/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
